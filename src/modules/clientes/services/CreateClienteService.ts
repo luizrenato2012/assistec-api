@@ -1,7 +1,7 @@
 import AppErrors from '@shared/http/AppErrors';
 import { getCustomRepository } from 'typeorm';
 import { Cliente } from '../typeorm/entities/Clientes';
-import ClienteRepository from '../typeorm/repositories/ClientesRepository';
+import ClientesRepository from '../typeorm/repositories/ClientesRepository';
 
 interface CreateClienteRequest {
   nome: string;
@@ -19,7 +19,7 @@ export default class CreateClienteService {
     estado,
     telefone,
   }: CreateClienteRequest): Promise<Cliente> {
-    const clienteRepository = getCustomRepository(ClienteRepository);
+    const clienteRepository = getCustomRepository(ClientesRepository);
 
     const clienteExists = await clienteRepository.findByNome(nome);
     if (clienteExists) {

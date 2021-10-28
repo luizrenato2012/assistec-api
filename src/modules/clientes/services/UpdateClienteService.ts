@@ -1,7 +1,7 @@
 import AppErrors from '@shared/http/AppErrors';
 import { getCustomRepository } from 'typeorm';
 import { Cliente } from '../typeorm/entities/Clientes';
-import ClienteRepository from '../typeorm/repositories/ClientesRepository';
+import ClientesRepository from '../typeorm/repositories/ClientesRepository';
 
 interface UpdateClienteRequest {
   id: number;
@@ -26,7 +26,7 @@ export default class UpdateClienteService {
     estado,
     telefone,
   }: UpdateClienteRequest): Promise<Cliente> {
-    const clienteRepository = getCustomRepository(ClienteRepository);
+    const clienteRepository = getCustomRepository(ClientesRepository);
     const existsCliente = clienteRepository.findByNome(nome);
     if (!existsCliente) {
       throw new AppErrors('Cliente nao encontrado!');

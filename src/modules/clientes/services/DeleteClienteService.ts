@@ -1,6 +1,6 @@
 import AppErrors from '@shared/http/AppErrors';
 import { getCustomRepository } from 'typeorm';
-import ClienteRepository from '../typeorm/repositories/ClientesRepository';
+import ClientesRepository from '../typeorm/repositories/ClientesRepository';
 
 interface DeleteClienteRequest {
   id: number;
@@ -8,7 +8,7 @@ interface DeleteClienteRequest {
 
 export default class DeleteClienteService {
   public async execute({ id }: DeleteClienteRequest): Promise<void> {
-    const clienteRepository = getCustomRepository(ClienteRepository);
+    const clienteRepository = getCustomRepository(ClientesRepository);
 
     const cliente = await clienteRepository.findOne(id);
 

@@ -1,7 +1,7 @@
 import AppErrors from '@shared/http/AppErrors';
 import { getCustomRepository } from 'typeorm';
 import { Cliente } from '../typeorm/entities/Clientes';
-import ClienteRepository from '../typeorm/repositories/ClientesRepository';
+import ClientesRepository from '../typeorm/repositories/ClientesRepository';
 
 interface ShowClienteRequest {
   id: number;
@@ -9,7 +9,7 @@ interface ShowClienteRequest {
 
 export default class ShowClienteService {
   public async execute({ id }: ShowClienteRequest): Promise<Cliente> {
-    const clienteRepository = getCustomRepository(ClienteRepository);
+    const clienteRepository = getCustomRepository(ClientesRepository);
 
     const cliente = await clienteRepository.findOne({
       where: {

@@ -1,5 +1,5 @@
 import 'reflect-metadata';
-import express, { Request, Response } from 'express';
+import express, { NextFunction, Request, Response } from 'express';
 import 'express-async-errors';
 import cors from 'cors';
 import routes from '@shared/http/routes';
@@ -15,13 +15,14 @@ app.use(express.json());
 app.use(routes);
 app.use(errors());
 
-app.use((error: Error, _: Request, response: Response) => {
+app.use((error: Error, _: Request, response: Response, next: NextFunction) => {
   if (error instanceof AppErrors) {
     return response.status(error.statusCode).json({
       status: 'error',
       message: error.message,
     });
   }
+  console.error(error);
   return response.status(500).json({
     status: 'error',
     message: 'Internal Server Error',
