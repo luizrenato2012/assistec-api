@@ -6,3 +6,5 @@ São usados:
  - TypeORM
  - Celebrate
  - Postgres
+ - bcrypt.js
+ - JSON Web Token

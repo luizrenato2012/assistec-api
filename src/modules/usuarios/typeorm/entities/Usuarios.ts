@@ -1,7 +1,7 @@
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity('usuarios')
-export class Usuario {
+class Usuario {
   @PrimaryGeneratedColumn('increment')
   id: number;
 
@@ -20,3 +20,5 @@ export class Usuario {
   @Column()
   updated_at: Date;
 }
+
+export default Usuario;

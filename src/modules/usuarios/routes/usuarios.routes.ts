@@ -3,11 +3,11 @@ import { Router } from 'express';
 import Joi from 'joi';
 import UsuariosController from '../controllers/UsuariosController';
 
-const usuariosRoutes = Router();
+const usuariosRouter = Router();
 const usuariosController = new UsuariosController();
 
-usuariosRoutes.get('/', usuariosController.index);
-usuariosRoutes.post(
+usuariosRouter.get('/', usuariosController.index);
+usuariosRouter.post(
   '/',
   celebrate({
     [Segments.BODY]: {
@@ -19,4 +19,4 @@ usuariosRoutes.post(
   usuariosController.create,
 );
 
-export default usuariosRoutes;
+export default usuariosRouter;
