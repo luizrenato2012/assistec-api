@@ -30,7 +30,7 @@ export class CreateSessionsService {
     if (!isMesma) {
       throw new AppErrors('Combinação email/senha incorretos!', 401);
     }
-    const secret = '3d53cdcb764fffed00372eb7550c28b0';
+    const secret = '';
     const token = sign({}, secret, {
       subject: usuario.id + '',
       expiresIn: '1d',
